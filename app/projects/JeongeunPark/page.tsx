@@ -3,22 +3,15 @@
 import { Model } from "@/app/utils/cli/Model";
 import { WebGPU } from "@/app/utils/cli/WebGPU";
 
-import { Canvas, extend } from "@react-three/fiber";
 import {
   Bounds,
   Environment,
   OrbitControls,
   PerspectiveCamera,
+  useGLTF,
 } from "@react-three/drei";
-import {
-  MeshBasicNodeMaterial,
-  MeshStandardNodeMaterial,
-} from "three/examples/jsm/nodes/Nodes";
-import { useRef, useState } from "react";
 
-function Thing() {
-  return <Model />;
-}
+useGLTF.preload("/glb/jeoungeun/JEOUNGEUN_join.gltf");
 
 export default function Works() {
   return (
@@ -43,7 +36,11 @@ export default function Works() {
           <ambientLight intensity={0.5} />
 
           <Bounds fit clip margin={3}>
-            <Thing />
+            <Model
+              meshDir="/glb/jeoungeun/JEOUNGEUN_join.gltf"
+              meshName="Group"
+              mtlName="Sculpture"
+            />
           </Bounds>
         </WebGPU>
       }
