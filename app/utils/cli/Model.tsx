@@ -17,9 +17,6 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
     "/glb/JEOUNGEUN_join.gltf"
   ) as GLTFResult;
 
-  console.log(nodes);
-  console.log(materials);
-
   return (
     <group {...props} dispose={null}>
       <mesh

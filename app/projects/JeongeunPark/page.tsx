@@ -19,16 +19,6 @@ import { useRef, useState } from "react";
 function Thing() {
   return <Model />;
 }
-extend({ MeshBasicNodeMaterial, MeshStandardNodeMaterial });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      meshBasicNodeMaterial: any;
-      meshStandardNodeMaterial: any;
-    }
-  }
-}
 
 export default function Works() {
   return (
