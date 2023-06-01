@@ -13,6 +13,7 @@ export function WebGPU(props: React.PropsWithChildren<any>) {
 
   return (
     <Canvas
+      resize={{ scroll: true, debounce: { scroll: 50, resize: 3 } }}
       gl={
         {
           toneMapping: THREE.ACESFilmicToneMapping,

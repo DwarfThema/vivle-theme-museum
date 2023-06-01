@@ -13,11 +13,9 @@ import {
   useGLTF,
 } from "@react-three/drei";
 
-useGLTF.preload("/glb/serim/Serim_Scene_2_Ground.gltf");
-
 export default function Works() {
   return (
-    <main className="flex h-screen w-screen flex-col items-center justify-center bg-black">
+    <main className="w-screen h-screen bg-black">
       <WebGPU>
         <Physics>
           <FPSControls />
@@ -45,3 +43,5 @@ export default function Works() {
     </main>
   );
 }
+
+useGLTF.preload("/glb/serim/Serim_Scene_2_Ground.gltf");

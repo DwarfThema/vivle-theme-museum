@@ -13,7 +13,7 @@ import {
 
 export default function Works() {
   return (
-    <main className="flex w-screen h-screen flex-col items-center justify-center">
+    <main style={{ height: "100vh", width: "100%" }} className="bg-black">
       {/*       <Canvas>
         <OrbitControls makeDefault autoRotate />
         <PerspectiveCamera position={[2, 1, 2]} makeDefault />
