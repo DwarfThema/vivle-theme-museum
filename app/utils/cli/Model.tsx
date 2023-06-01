@@ -22,4 +22,4 @@ export function Model({ meshDir, meshName, mtlName }: Imodel) {
   );
 }
 
-//useGLTF.preload("/glb/JEOUNGEUN_join.gltf");
+useGLTF.preload("/glb/JEOUNGEUN_join.gltf");

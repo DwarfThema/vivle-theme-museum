@@ -45,5 +45,3 @@ export default function Works() {
     </main>
   );
 }
-
-useGLTF.preload("/glb/jeoungeun/JEOUNGEUN_join.gltf");
