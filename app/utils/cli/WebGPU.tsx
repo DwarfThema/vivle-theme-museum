@@ -13,7 +13,7 @@ export function WebGPU(props: React.PropsWithChildren<any>) {
 
   return (
     <Canvas
-      className="w-full h-full"
+      className="w-full h-full relative"
       gl={(canvas) => {
         /* const r = new WebGPURenderer({ canvas });
         r.setClearColor(0x000000, 0);
