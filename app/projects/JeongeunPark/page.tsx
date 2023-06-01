@@ -15,7 +15,7 @@ useGLTF.preload("/glb/jeoungeun/JEOUNGEUN_join.gltf");
 
 export default function Works() {
   return (
-    <main className="flex h-full w-full flex-col items-center justify-center">
+    <main className="flex h-screen w-screen flex-col items-center justify-center">
       {/*       <Canvas>
         <OrbitControls makeDefault autoRotate />
         <PerspectiveCamera position={[2, 1, 2]} makeDefault />
