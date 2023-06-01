@@ -11,11 +11,9 @@ import {
   useGLTF,
 } from "@react-three/drei";
 
-useGLTF.preload("/glb/jeoungeun/JEOUNGEUN_join.gltf");
-
 export default function Works() {
   return (
-    <main className="flex h-screen w-screen flex-col items-center justify-center">
+    <main className="flex w-screen h-screen flex-col items-center justify-center">
       {/*       <Canvas>
         <OrbitControls makeDefault autoRotate />
         <PerspectiveCamera position={[2, 1, 2]} makeDefault />
@@ -47,3 +45,5 @@ export default function Works() {
     </main>
   );
 }
+
+useGLTF.preload("/glb/jeoungeun/JEOUNGEUN_join.gltf");

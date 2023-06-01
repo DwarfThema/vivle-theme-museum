@@ -13,12 +13,18 @@ export function WebGPU(props: React.PropsWithChildren<any>) {
 
   return (
     <Canvas
-      className="w-full h-full relative"
-      gl={(canvas) => {
-        /* const r = new WebGPURenderer({ canvas });
+      gl={
+        {
+          toneMapping: THREE.ACESFilmicToneMapping,
+          outputEncoding: THREE.sRGBEncoding,
+        }
+
+        /* (canvas) => {
+        const r = new WebGPURenderer({ canvas });
         r.setClearColor(0x000000, 0);
-        return r; */
-      }}
+        return r; 
+      } */
+      }
       {...props}
     />
   );
