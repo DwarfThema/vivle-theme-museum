@@ -1,0 +1,2 @@
+git lfs track "*.gltf"
+git lfs track "*.glb"
