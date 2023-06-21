@@ -11,7 +11,7 @@ import {
   useGLTF,
 } from "@react-three/drei";
 
-export default function JeongeunIndex() {
+export default function Jeongeun1() {
   return (
     <main style={{ height: "100vh", width: "100%" }} className="bg-black">
       {/*       <Canvas>
