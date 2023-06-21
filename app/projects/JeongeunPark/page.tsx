@@ -38,9 +38,6 @@ export default function JeongeunIndex() {
               meshDir="/glb/jeoungeun/JEOUNGEUN_join.gltf"
               meshName="Group"
               mtlName="Sculpture"
-              x={0}
-              y={0}
-              z={0}
             />
           </Bounds>
         </WebGPU>
