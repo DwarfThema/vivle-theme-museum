@@ -11,7 +11,7 @@ import {
   useGLTF,
 } from "@react-three/drei";
 
-export default function Works() {
+export default function JeongeunIndex() {
   return (
     <main style={{ height: "100vh", width: "100%" }} className="bg-black">
       {/*       <Canvas>
@@ -38,6 +38,9 @@ export default function Works() {
               meshDir="/glb/jeoungeun/JEOUNGEUN_join.gltf"
               meshName="Group"
               mtlName="Sculpture"
+              x={0}
+              y={0}
+              z={0}
             />
           </Bounds>
         </WebGPU>

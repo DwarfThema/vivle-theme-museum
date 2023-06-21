@@ -3,7 +3,7 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
 
-export default function Works() {
+export default function DasomIndex() {
   function Box(props: any) {
     // This reference will give us direct access to the mesh
     const mesh = useRef();

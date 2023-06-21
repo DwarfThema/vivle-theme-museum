@@ -16,7 +16,7 @@ import {
   useGLTF,
 } from "@react-three/drei";
 
-export default function Works() {
+export default function SerimIndex() {
   return (
     <main className="w-screen h-screen bg-black">
       <KeyboardControls
@@ -26,6 +26,7 @@ export default function Works() {
           { name: "left", keys: ["ArrowLeft", "a", "A"] },
           { name: "right", keys: ["ArrowRight", "d", "D"] },
           { name: "jump", keys: ["Space"] },
+          { name: "sit", keys: ["v"] },
         ]}
       >
         <WebGPU>

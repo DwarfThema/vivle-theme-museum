@@ -1,0 +1,125 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.8.19",
+        "version" : "2.0"
+    },
+    "scene" : 2,
+    "scenes" : [
+        {
+            "name" : "JeoungEun"
+        },
+        {
+            "name" : "Load"
+        },
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "collider"
+        }
+    ],
+    "materials" : [
+        {
+            "alphaCutoff" : 0.5,
+            "alphaMode" : "MASK",
+            "doubleSided" : true,
+            "name" : "collider_mtl",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.800000011920929,
+                    0.800000011920929,
+                    0.800000011920929,
+                    0
+                ],
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Plane",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 68,
+            "max" : [
+                6.55925178527832,
+                4.544025897979736,
+                5.073524475097656
+            ],
+            "min" : [
+                -10.525603294372559,
+                -0.21672776341438293,
+                -22.267637252807617
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 68,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 68,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 102,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 816,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 816,
+            "byteOffset" : 816
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 544,
+            "byteOffset" : 1632
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 204,
+            "byteOffset" : 2176
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 2380,
+            "uri" : "data:application/octet-stream;base64,32gowaKrXb5QWqJA32gowaKrXb5QWqJA32gowaKrXb5QWqJAZOXRQKKrXb5QWqJAZOXRQKKrXb5QWqJAZOXRQKKrXb5QWqJA32gowaKrXb4fJLLB32gowaKrXb4fJLLB32gowaKrXb4fJLLBZOXRQKKrXb4fJLLBZOXRQKKrXb4fJLLBZOXRQKKrXb4fJLLBNUd2wOLtXb7FRY7ANUd2wOLtXb7FRY7ANUd2wOLtXb7FRY7ANUd2wERC5D/FRY7ANUd2wERC5D/FRY7ANUd2wERC5D/FRY7ANUd2wOLtXb4T3DDBNUd2wOLtXb4T3DDBNUd2wOLtXb4T3DDBNUd2wERC5D8T3DDBNUd2wERC5D8T3DDBNUd2wERC5D8T3DDBZLQ2v+LtXb7FRY7AZLQ2v+LtXb7FRY7AZLQ2v+LtXb7FRY7AZLQ2v0RC5D/FRY7AZLQ2v0RC5D/FRY7AZLQ2v0RC5D/FRY7AZLQ2v+LtXb4T3DDBZLQ2v+LtXb4T3DDBZLQ2v+LtXb4T3DDBZLQ2v0RC5D8T3DDBZLQ2v0RC5D8T3DDBZLQ2v0RC5D8T3DDBzNYmP+LtXb7FRY7AzNYmP+LtXb7FRY7AzNYmP+LtXb7FRY7AzNYmP0RC5D/FRY7AzNYmP0RC5D/FRY7AzNYmP0RC5D/FRY7AzNYmP+LtXb7duyTBzNYmP+LtXb7duyTBzNYmP+LtXb7duyTBzNYmP0RC5D/duyTBzNYmP0RC5D/duyTBzNYmP0RC5D/duyTBrz4nQOLtXb7FRY7Arz4nQOLtXb7FRY7Arz4nQOLtXb7FRY7Arz4nQERC5D/FRY7Arz4nQERC5D/FRY7Arz4nQERC5D/FRY7Arz4nQOLtXb7duyTBrz4nQOLtXb7duyTBrz4nQOLtXb7duyTBrz4nQERC5D/duyTBrz4nQERC5D/duyTBrz4nQERC5D/duyTB32gowalokUAfJLLB32gowalokUAfJLLB32gowalokUBQWqJA32gowalokUBQWqJAZOXRQKlokUBQWqJAZOXRQKlokUBQWqJAZOXRQKlokUAfJLLBZOXRQKlokUAfJLLBAAAAAAAAAAAAAIC/AAAAAP//fz8AAACAAACAPwAAAAAAAACAAACAvwAAAAAAAACAAAAAAAAAAAAAAIC/AAAAAP//fz8AAACAAAAAAAAAAAAAAIA/AAAAAP//fz8AAACAAACAPwAAAAAAAACAAACAvwAAAAAAAACAAAAAAAAAAAAAAIA/AAAAAP//fz8AAACAAACAvwAAAAAAAACAAAAAAAAAgL8AAACAAAAAAAAAAAAAAIA/AACAvwAAAAAAAACAAAAAAAAAAAAAAIA/AAAAAAAAgD8AAACAAACAvwAAAAAAAACAAAAAAAAAgL8AAACAAAAAAAAAAAAAAIC/AACAvwAAAAAAAACAAAAAAAAAAAAAAIC/AAAAAAAAgD8AAACAAAAAAAAAgL8AAACAAAAAAAAAAAAAAIA/AACAPwAAAAAAAACAAAAAAAAAAAAAAIA/AAAAAAAAgD8AAACAAACAPwAAAAAAAACAAAAAAAAAgL8AAACAAAAAAAAAAAAAAIC/AACAPwAAAAAAAACAAAAAAAAAAAAAAIC/AAAAAAAAgD8AAACAAACAPwAAAAAAAACAAACAvwAAAAAAAACAAAAAAAAAgL8AAACAAAAAAAAAAAAAAIA/AACAvwAAAAAAAACAAAAAAAAAAAAAAIA/AAAAAAAAgD8AAACAAACAvwAAAAAAAACAAAAAAAAAgL8AAACAAAAAAAAAAAAAAIC/AACAvwAAAAAAAACAAAAAAAAAAAAAAIC/AAAAAAAAgD8AAACAAAAAAAAAgL8AAACAAAAAAAAAAAAAAIA/AACAPwAAAAAAAACAAAAAAAAAAAAAAIA/AAAAAAAAgD8AAACAAACAPwAAAAAAAACAAAAAAAAAgL8AAACAAAAAAAAAAAAAAIC/AACAPwAAAAAAAACAAAAAAAAAAAAAAIC/AAAAAAAAgD8AAACAAACAPwAAAAAAAACAAAAAAAAAAAAAAIA/AACAPwAAAAAAAACAAAAAAAAAAAAAAIC/AACAPwAAAAAAAACAAACAvwAAAAAAAACAAAAAAAAAAAAAAIC/AACAvwAAAAAAAACAAAAAAAAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAADAPgAAgD8AAAA+AACAPgAAwD4AAAAAAAAgPwAAgD8AACA/AAAAAAAAYD8AAIA+AADAPgAAQD8AAAA+AAAAPwAAwD4AAEA/AAAgPwAAQD8AACA/AABAPwAAYD8AAAA/AADAPgAAgD4AAMA+AACAPgAAwD4AAIA+AAAgPwAAgD4AACA/AACAPgAAID8AAIA+AADAPgAAAD8AAMA+AAAAPwAAwD4AAAA/AAAgPwAAAD8AACA/AAAAPwAAID8AAAA/AADAPgAAgD8AAAA+AACAPgAAwD4AAAAAAAAgPwAAgD8AACA/AAAAAAAAYD8AAIA+AADAPgAAQD8AAAA+AAAAPwAAwD4AAEA/AAAgPwAAQD8AACA/AABAPwAAYD8AAAA/AADAPgAAgD4AAMA+AACAPgAAwD4AAIA+AAAgPwAAgD4AACA/AACAPgAAID8AAIA+AADAPgAAAD8AAMA+AAAAPwAAwD4AAAA/AAAgPwAAAD8AACA/AAAAPwAAID8AAAA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAIA/AAAAAAEABQALAAEACwAHAAwADwAVAAwAFQASABQAFgAhABQAIQAfACAAIwAdACAAHQAaABkAGwAQABkAEAAOABMAHgAYABMAGAANACIAFwARACIAEQAcACQAJwAtACQALQAqACwALgA5ACwAOQA3ADgAOwA1ADgANQAyADEAMwAoADEAKAAmACsANgAwACsAMAAlADoALwApADoAKQA0AAMAQABCAAMAQgAJAAgAPQA/AAgAPwACAAoAQwA8AAoAPAAGAAAAPgBBAAAAQQAEAA=="
+        }
+    ]
+}

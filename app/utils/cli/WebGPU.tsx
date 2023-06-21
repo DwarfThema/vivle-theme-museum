@@ -26,6 +26,7 @@ export function WebGPU(props: React.PropsWithChildren<any>) {
         return r; 
       } */
       }
+      camera={{ fov: 45 }}
       {...props}
     />
   );

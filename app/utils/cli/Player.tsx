@@ -1,29 +1,37 @@
 import * as THREE from "three";
 import * as RAPIER from "@dimforge/rapier3d-compat";
-import { useRef } from "react";
-import { useFrame } from "@react-three/fiber";
-import { useKeyboardControls } from "@react-three/drei";
+import { ReactEventHandler, useCallback, useRef, useState } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
+import { PointerLockControls, useKeyboardControls } from "@react-three/drei";
 import { CapsuleCollider, RigidBody, useRapier } from "@react-three/rapier";
+import { IPos } from "./properties";
 
-const SPEED = 5;
+const SPEED = 2;
 const direction = new THREE.Vector3();
 const frontVector = new THREE.Vector3();
 const sideVector = new THREE.Vector3();
 const rotation = new THREE.Vector3();
 
-export function Player({ lerp = THREE.MathUtils.lerp }) {
+interface IPlayer {
+  lerp?: any;
+  pos?: IPos;
+}
+
+export function Player({ lerp, pos }: IPlayer) {
   const ref = useRef() as any;
+  lerp = THREE.MathUtils.lerp;
+  const [jumping, setJumping] = useState(true);
   const rapier = useRapier();
   const [, get] = useKeyboardControls();
+  const { camera } = useThree();
 
   useFrame((state) => {
-    const { forward, backward, left, right, jump } = get() as any;
-
+    const { forward, backward, left, right, jump, sit } = get() as any;
     const velocity = ref.current.linvel();
 
     //camera Update
     const position = ref.current.translation();
-    state.camera.position.set(position.x, position.y, position.z);
+    camera.position.set(position.x, position.y, position.z);
 
     //movemont
     frontVector.set(0, 0, backward - forward);
@@ -32,27 +40,29 @@ export function Player({ lerp = THREE.MathUtils.lerp }) {
       .subVectors(frontVector, sideVector)
       .normalize()
       .multiplyScalar(SPEED)
-      .applyEuler(state.camera.rotation);
+      .applyEuler(camera.rotation);
 
     // Apply linear velocity to Player.
-    ref.current.setLinvel({
-      x: direction.x,
-      y: velocity.y,
-      z: direction.z,
-    });
+    ref.current.setLinvel({ x: direction.x, y: velocity.y, z: direction.z });
 
     // Jumping
-    const world = rapier.world;
+    const world = rapier.world.raw();
     const ray = world.castRay(
       new RAPIER.Ray(ref.current.translation(), { x: 0, y: -1, z: 0 }),
-      1.247,
+      1.599,
       false
     );
+    const grounded = ray && ray.collider && Math.abs(ray.toi) <= 1.7;
 
-    const grounded = ray && ray.collider && Math.abs(ray.toi) < 1.25;
-    console.log(ray);
+    if (jump && grounded && jumping) {
+      ref.current.setLinvel({ x: 0, y: 5, z: 0 });
+      console.log("jump");
+      setJumping(false);
+      setTimeout(() => setJumping(true), 500);
+    }
 
-    if (jump && grounded) ref.current.setLinvel({ x: 0, y: 10, z: 0 });
+    if (sit && grounded)
+      state.camera.position.set(position.x, position.y - 0.5, position.z);
   });
 
   return (
@@ -62,11 +72,16 @@ export function Player({ lerp = THREE.MathUtils.lerp }) {
         colliders={false}
         mass={1}
         type="dynamic"
-        position={[0, 10, 0]}
+        position={
+          pos?.x == undefined || pos?.y == undefined || pos?.z == undefined
+            ? [0, 0, 0]
+            : [pos.x, pos.y, pos.z]
+        }
         enabledRotations={[false, false, false]}
       >
-        <CapsuleCollider args={[0.75, 0.5]} />
+        <CapsuleCollider args={[1.3, 0.3]} />
       </RigidBody>
+      <PointerLockControls />
     </>
   );
 }
