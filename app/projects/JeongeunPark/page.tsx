@@ -28,7 +28,7 @@ export default function JeongeunIndex() {
               { name: "left", keys: ["ArrowLeft", "a", "A"] },
               { name: "right", keys: ["ArrowRight", "d", "D"] },
               { name: "jump", keys: ["Space"] },
-              { name: "sit", keys: ["c"] },
+              { name: "sit", keys: ["v"] },
             ]}
           >
             <WebGPU>

@@ -1,2 +1,2 @@
-git lfs track "*.gltf"
-git lfs track "*.glb"
+*.gltf filter=lfs diff=lfs merge=lfs -text
+*.glb filter=lfs diff=lfs merge=lfs -text

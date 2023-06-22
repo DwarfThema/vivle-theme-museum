@@ -3,7 +3,12 @@ import * as RAPIER from "@dimforge/rapier3d-compat";
 import { ReactEventHandler, useCallback, useRef, useState } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { PointerLockControls, useKeyboardControls } from "@react-three/drei";
-import { CapsuleCollider, RigidBody, useRapier } from "@react-three/rapier";
+import {
+  CapsuleCollider,
+  RapierRigidBody,
+  RigidBody,
+  useRapier,
+} from "@react-three/rapier";
 import { IPos } from "./properties";
 
 const SPEED = 2;
@@ -18,20 +23,23 @@ interface IPlayer {
 }
 
 export function Player({ lerp, pos }: IPlayer) {
-  const ref = useRef() as any;
+  const ref = useRef<RapierRigidBody | null>(null);
   lerp = THREE.MathUtils.lerp;
   const [jumping, setJumping] = useState(true);
   const rapier = useRapier();
   const [, get] = useKeyboardControls();
-  const { camera } = useThree();
 
   useFrame((state) => {
     const { forward, backward, left, right, jump, sit } = get() as any;
-    const velocity = ref.current.linvel();
+    const velocity = ref?.current?.linvel();
 
     //camera Update
-    const position = ref.current.translation();
-    camera.position.set(position.x, position.y, position.z);
+    const position = ref?.current?.translation() as THREE.Vector3;
+    state.camera.position.set(
+      position?.x as number,
+      position?.y as number,
+      position?.z as number
+    );
 
     //movemont
     frontVector.set(0, 0, backward - forward);
@@ -40,29 +48,36 @@ export function Player({ lerp, pos }: IPlayer) {
       .subVectors(frontVector, sideVector)
       .normalize()
       .multiplyScalar(SPEED)
-      .applyEuler(camera.rotation);
+      .applyEuler(state.camera.rotation);
 
     // Apply linear velocity to Player.
-    ref.current.setLinvel({ x: direction.x, y: velocity.y, z: direction.z });
+    ref?.current?.setLinvel(
+      {
+        x: direction.x as number,
+        y: velocity?.y as number,
+        z: direction.z as number,
+      },
+      true
+    );
 
     // Jumping
-    const world = rapier.world.raw();
+    const world = rapier.world;
     const ray = world.castRay(
-      new RAPIER.Ray(ref.current.translation(), { x: 0, y: -1, z: 0 }),
+      new RAPIER.Ray(position, { x: 0, y: -1, z: 0 }),
       1.599,
       false
     );
     const grounded = ray && ray.collider && Math.abs(ray.toi) <= 1.7;
 
     if (jump && grounded && jumping) {
-      ref.current.setLinvel({ x: 0, y: 5, z: 0 });
-      console.log("jump");
+      ref?.current?.setLinvel({ x: 0, y: 5, z: 0 }, true);
       setJumping(false);
       setTimeout(() => setJumping(true), 500);
     }
 
-    if (sit && grounded)
-      state.camera.position.set(position.x, position.y - 0.5, position.z);
+    if (sit && grounded) {
+      state.camera.position.set(position?.x, position?.y - 0.5, position?.z);
+    }
   });
 
   return (
