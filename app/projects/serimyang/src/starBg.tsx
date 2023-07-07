@@ -58,11 +58,11 @@ export default function StarsBg(props: any) {
   }, []);
 
   useFrame(({ clock }) => {
-    meshRefs?.current?.forEach(({ ref, offset }: any) => {
+    meshRefs?.current?.forEach((ref, i) => {
       if (ref?.current) {
         ref.current.lookAt(camera.position);
         (ref.current.material as MeshStandardMaterial).emissiveIntensity =
-          (Math.sin(clock.getElapsedTime() * 0.5 + offset) + 1) / 2;
+          (Math.sin(clock.getElapsedTime() + offsets[i]) + 1) / 2;
       }
     });
   });
