@@ -1,6 +1,6 @@
 import { Detailed, useGLTF } from "@react-three/drei";
 import { useFrame, useLoader, useThree } from "@react-three/fiber";
-import React from "react";
+import { createRef, useEffect, useRef, useState } from "react";
 import { Mesh, MeshStandardMaterial, TextureLoader } from "three";
 
 const imgUrls = [
@@ -49,15 +49,17 @@ const imgUrls = [
 export default function StarsBg(props: any) {
   const textures = useLoader(TextureLoader, imgUrls);
   const { camera } = useThree();
-  const meshInfos = textures.map(() => ({
-    ref: React.useRef<Mesh>(),
-    offset: Math.random() * Math.PI * 1, // 0에서 2π 사이의 랜덤한 초기 시점(offset)
-  }));
+  const meshRefs = useRef<(React.RefObject<Mesh> | null)[]>([]);
+  const [offsets, setOffsets] = useState<number[]>([]);
+
+  useEffect(() => {
+    setOffsets(imgUrls.map(() => Math.random() * Math.PI * 1));
+    meshRefs.current = imgUrls.map(() => createRef<Mesh>());
+  }, []);
 
   useFrame(({ clock }) => {
-    meshInfos.forEach(({ ref, offset }) => {
-      ref.current?.lookAt(camera.position);
-      if (ref.current) {
+    meshRefs?.current?.forEach(({ ref, offset }: any) => {
+      if (ref?.current) {
         ref.current.lookAt(camera.position);
         (ref.current.material as MeshStandardMaterial).emissiveIntensity =
           (Math.sin(clock.getElapsedTime() * 0.5 + offset) + 1) / 2;
@@ -65,11 +67,11 @@ export default function StarsBg(props: any) {
     });
   });
 
-  const planes = meshInfos.map(({ ref }, index) => (
-    <mesh receiveShadow castShadow key={index} ref={ref as any}>
+  const planes = imgUrls.map((_, i) => (
+    <mesh receiveShadow castShadow key={i} ref={meshRefs.current[i]}>
       <planeBufferGeometry args={[2, 2]} attach="geometry" />
       <meshStandardMaterial
-        map={textures[index]}
+        map={textures[i]}
         emissive={"#ffffc5"}
         attach="material"
         transparent={true}
