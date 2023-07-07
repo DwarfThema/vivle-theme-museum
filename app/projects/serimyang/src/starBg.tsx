@@ -46,6 +46,9 @@ const imgUrls = [
   "/glb/serim/stars/40.png",
 ];
 
+const minIntensity = 0.8;
+const maxIntensity = 1;
+
 export default function StarsBg(props: any) {
   const textures = useLoader(TextureLoader, imgUrls);
   const { camera } = useThree();
@@ -62,7 +65,8 @@ export default function StarsBg(props: any) {
       if (ref?.current) {
         ref.current.lookAt(camera.position);
         (ref.current.material as MeshStandardMaterial).emissiveIntensity =
-          (Math.sin(clock.getElapsedTime() + offsets[i]) + 1) / 2;
+          ((Math.sin(clock.getElapsedTime() + offsets[i]) + 1) / 2) *
+          (maxIntensity - minIntensity);
       }
     });
   });
@@ -72,7 +76,7 @@ export default function StarsBg(props: any) {
       <planeBufferGeometry args={[2, 2]} attach="geometry" />
       <meshStandardMaterial
         map={textures[i]}
-        emissive={"#ffffc5"}
+        emissive={"#ffffe4"}
         attach="material"
         transparent={true}
       />
