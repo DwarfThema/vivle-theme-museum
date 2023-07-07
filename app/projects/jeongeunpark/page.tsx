@@ -10,17 +10,17 @@ import { Physics } from "@react-three/rapier";
 import { Leva, useControls } from "leva";
 
 export default function JeongeunIndex() {
-  /*   const { objX, objY, objZ } = useControls({
+  const { objX, objY, objZ } = useControls({
     objX: 0.5,
     objY: 2,
     objZ: 0,
-  }); */
+  });
 
   return (
     <main style={{ height: "100vh", width: "100%" }} className="bg-black">
       {
         <>
-          {/*  <Leva collapsed /> */}
+          <Leva collapsed />
           <KeyboardControls
             map={[
               { name: "forward", keys: ["ArrowUp", "w", "W"] },
