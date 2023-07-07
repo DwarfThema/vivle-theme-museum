@@ -1,6 +1,12 @@
 import * as THREE from "three";
 import * as RAPIER from "@dimforge/rapier3d-compat";
-import { ReactEventHandler, useCallback, useRef, useState } from "react";
+import {
+  ReactEventHandler,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { PointerLockControls, useKeyboardControls } from "@react-three/drei";
 import {
@@ -11,7 +17,7 @@ import {
 } from "@react-three/rapier";
 import { IPos } from "./properties";
 
-const SPEED = 2;
+var SPEED = 2;
 const direction = new THREE.Vector3();
 const frontVector = new THREE.Vector3();
 const sideVector = new THREE.Vector3();
@@ -20,9 +26,11 @@ const rotation = new THREE.Vector3();
 interface IPlayer {
   lerp?: any;
   pos?: IPos;
+  speed?: number;
+  tall?: number;
 }
 
-export function Player({ lerp, pos }: IPlayer) {
+export function Player({ lerp, pos = { x: 0, y: 10, z: 0 } }: IPlayer) {
   const ref = useRef<RapierRigidBody | null>(null);
   lerp = THREE.MathUtils.lerp;
   const [jumping, setJumping] = useState(true);
@@ -35,11 +43,7 @@ export function Player({ lerp, pos }: IPlayer) {
 
     //camera Update
     const position = ref?.current?.translation() as THREE.Vector3;
-    state.camera.position.set(
-      position?.x as number,
-      position?.y as number,
-      position?.z as number
-    );
+    state.camera.position.set(position?.x, position?.y, position?.z);
 
     //movemont
     frontVector.set(0, 0, backward - forward);
@@ -53,9 +57,9 @@ export function Player({ lerp, pos }: IPlayer) {
     // Apply linear velocity to Player.
     ref?.current?.setLinvel(
       {
-        x: direction.x as number,
+        x: direction.x,
         y: velocity?.y as number,
-        z: direction.z as number,
+        z: direction.z,
       },
       true
     );
